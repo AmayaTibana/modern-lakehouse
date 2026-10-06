@@ -1,0 +1,9 @@
+.venv/
+data/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+.astro/
+.pytest_cache/
+.ruff_cache/
