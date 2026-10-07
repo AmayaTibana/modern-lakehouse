@@ -29,3 +29,4 @@ def run(limit: int = POKEMON_COUNT) -> int:
 
 if __name__ == "__main__":
     run()
+#What a nice artisanal code
