@@ -1,0 +1,10 @@
+services:
+  lakehouse-local:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    environment:
+      STORAGE_MODE: local
+      WEATHER_USER_AGENT: ${WEATHER_USER_AGENT:-lakehouse-demo-anonymous@example.com}
+    volumes:
+      - ./data:/app/data
