@@ -2,3 +2,6 @@ services:
   scheduler:
     volumes:
       - ./src:/usr/local/airflow/src
+      - ${HOME}/.snowflake/rsa_key.p8:/usr/local/airflow/keys/rsa_key.p8:ro
+    environment:
+      SNOWFLAKE_PRIVATE_KEY_PATH: /usr/local/airflow/keys/rsa_key.p8

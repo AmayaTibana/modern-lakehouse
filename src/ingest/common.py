@@ -13,7 +13,10 @@ LOCAL_ROOT = Path(__file__).resolve().parents[2] / "data"
 
 
 def today_partition() -> str:
-    """Today's date (UTC) as YYYY-MM-DD, used to partition raw files."""
+    """Partition date (UTC) as YYYY-MM-DD. PARTITION_DT env var overrides it."""
+    override = os.getenv("PARTITION_DT")
+    if override:
+        return override
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
