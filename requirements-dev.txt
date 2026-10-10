@@ -1,3 +1,4 @@
 requests
 boto3
 python-dotenvpyspark==3.5.3
+snowflake-connector-python
