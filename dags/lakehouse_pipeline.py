@@ -1,7 +1,7 @@
 import os
 import subprocess
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 sys.path.append("/usr/local/airflow")
 
@@ -12,7 +12,7 @@ PROJECT_DIR = "/usr/local/airflow"
 
 @dag(
     dag_id="lakehouse_pipeline",
-    start_date=datetime(2026, 10, 1, tzinfo=timezone.utc),
+    start_date=datetime(2026, 10, 1, tzinfo=UTC),
     schedule="@daily",
     catchup=False,
     default_args={"retries": 2, "retry_delay": timedelta(minutes=2)},
@@ -21,7 +21,7 @@ PROJECT_DIR = "/usr/local/airflow"
 def lakehouse_pipeline():
     @task
     def run_date() -> str:
-        return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        return datetime.now(UTC).strftime("%Y-%m-%d")
 
     @task
     def ingest_pokeapi(dt: str):

@@ -1,6 +1,6 @@
 import os
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import requests
 
@@ -50,7 +50,7 @@ def run() -> int:
             "location": name,
             "latitude": lat,
             "longitude": lon,
-            "ingested_at": datetime.now(timezone.utc).isoformat(),
+            "ingested_at": datetime.now(UTC).isoformat(),
             "forecast": forecast,
         }
         write_json("weather", f"{name}_forecast.json", payload)

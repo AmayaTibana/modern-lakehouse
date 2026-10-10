@@ -1,6 +1,6 @@
 import json
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -17,7 +17,7 @@ def today_partition() -> str:
     override = os.getenv("PARTITION_DT")
     if override:
         return override
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    return datetime.now(UTC).strftime("%Y-%m-%d")
 
 
 def write_json(source: str, filename: str, payload: dict) -> str:
